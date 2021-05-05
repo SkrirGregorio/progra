@@ -9,4 +9,5 @@
  console.log(subgru);
  insertarSubgrupos (subgru); */
 
- 
+ console.log(selectGrupos());
+
