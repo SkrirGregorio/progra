@@ -1,8 +1,8 @@
 class Subgrupos {
     constructor(id, nombre, grupo) {
-        this.id;
-        this.nombre;
-        this.grupo;
+        this.id=id;
+        this.nombre=nombre;
+        this.grupo=grupo;
     }
 
 
