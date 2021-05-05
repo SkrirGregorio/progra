@@ -55,6 +55,51 @@ function insertarSubgrupos(subgrupos) {
     });
 }
 
+function selectGrupos() {
+    db.transaction(tx => {
+        tx.executeSql('SELECT * FROM grupos  ORDER BY id, nombre', [], (tx, result) => {
+            let rows = result.rows;
+            if (rows.length >= 1) {
+                console.log(rows);
+                return rows;
+            } else {
+                return 'Vacio';
+            }
+        });
+
+    });
+}
+
+function selectSubGrupos() {
+    db.transaction(tx => {
+        tx.executeSql('SELECT * FROM subgrupos  ORDER BY id', [], (tx, result) => {
+            let rows = result.rows;
+            if (rows.length >= 1) {
+                console.log(rows);
+                return rows;
+            } else {
+                return 'Vacio';
+            }
+        });
+
+    });
+}
+
+function selectGastos() {
+    db.transaction(tx => {
+        tx.executeSql('SELECT * FROM gato  ORDER BY id', [], (tx, result) => {
+            let rows = result.rows;
+            if (rows.length >= 1) {
+                console.log(rows);
+                return rows;
+            } else {
+                return 'Vacio';
+            }
+        });
+
+    });
+}
+
 function actualizar(gasto) {
     this.db.transaction(tx => {
         tx.executeSql('UPDATE grupos SET nombre=?, valor=? WHERE id=?', [gasto.nombre, gasto.valor, gasto.id], actualizadoCorecto(), (transaction,error)=>console.log(error.message));
