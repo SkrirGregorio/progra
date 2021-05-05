@@ -38,7 +38,7 @@ function truncateTable() {
 
 function insertarGasto(gasto) {
     db.transaction(tx => {
-        tx.executeSql('INSERT INTO gasto (nombre, valor) VALUES (?,?)', [gasto.nombre, gasto.valor], correcto('Gasto Insertado Correctamente'), (transaction,error)=>console.log(error.message));
+        tx.executeSql('INSERT INTO gastos (nombre, valor) VALUES (?,?)', [gasto.nombre, gasto.valor], correcto('Gasto Insertado Correctamente'), (transaction,error)=>console.log(error.message));
 
     });
 }
@@ -56,48 +56,52 @@ function insertarSubgrupos(subgrupos) {
 }
 
 function selectGrupos() {
-    db.transaction(tx => {
-        tx.executeSql('SELECT * FROM grupos  ORDER BY id, nombre', [], (tx, result) => {
-            let rows = result.rows;
-            if (rows.length >= 1) {
-                console.log(rows);
-                return rows;
-            } else {
-                return 'Vacio';
-            }
+    return new Promise(resolve => {
+        db.transaction(tx => {
+            tx.executeSql('SELECT * FROM grupos  ORDER BY id', [], (tx, result) => {
+                let rows = result.rows;
+                if (rows.length >= 1) {
+                    resolve(rows);
+                } else {
+                    resolve('Vacio');
+                }
+            });
+    
         });
-
-    });
+      });
+ 
 }
 
 function selectSubGrupos() {
-    db.transaction(tx => {
-        tx.executeSql('SELECT * FROM subgrupos  ORDER BY id', [], (tx, result) => {
-            let rows = result.rows;
-            if (rows.length >= 1) {
-                console.log(rows);
-                return rows;
-            } else {
-                return 'Vacio';
-            }
+    return new Promise(resolve => {
+        db.transaction(tx => {
+            tx.executeSql('SELECT * FROM subgrupos  ORDER BY id', [], (tx, result) => {
+                let rows = result.rows;
+                if (rows.length >= 1) {
+                    resolve(rows);
+                } else {
+                    resolve('Vacio');
+                }
+            });
+    
         });
-
-    });
+      });
 }
 
 function selectGastos() {
-    db.transaction(tx => {
-        tx.executeSql('SELECT * FROM gato  ORDER BY id', [], (tx, result) => {
-            let rows = result.rows;
-            if (rows.length >= 1) {
-                console.log(rows);
-                return rows;
-            } else {
-                return 'Vacio';
-            }
+    return new Promise(resolve => {
+        db.transaction(tx => {
+            tx.executeSql('SELECT * FROM gastos  ORDER BY id', [], (tx, result) => {
+                let rows = result.rows;
+                if (rows.length >= 1) {
+                    resolve(rows);
+                } else {
+                    resolve('Vacio');
+                }
+            });
+    
         });
-
-    });
+      });
 }
 
 function actualizar(gasto) {
