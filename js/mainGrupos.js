@@ -14,7 +14,7 @@ obtenerGrupos();
  ///Funcion para obtener los grupos de la base de datos y mostrarlos en la tabla
  async function obtenerGrupos() {
      let datos = await selectGrupos();
-      
+     if (datos!='Vacio') {
      let t = '';
      for (let i = 0; i < datos.length; i++) {
         t += `
@@ -25,7 +25,7 @@ obtenerGrupos();
         `;        
      }
      $('#datos').html(t);     
-
+    }
 }
  
 //funcion para registrar un nuevo grupo
