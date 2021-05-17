@@ -42,12 +42,14 @@ function insertarGasto(gasto) {
 
     });
 }
+
 function insertarGrupo(grupos) {
     db.transaction(tx => {
         tx.executeSql('INSERT INTO grupos (nombre) VALUES (?)', [grupos.nombre], correcto('Grupo Insertado Correctamente'),(transaction,error)=>console.log(error.message));
 
     });
 }
+
 function insertarSubgrupos(subgrupos) {
     db.transaction(tx => {
         tx.executeSql('INSERT INTO subgrupos (nombre, grupo) VALUES (?,?)', [subgrupos.nombre, subgrupos.grupo], correcto('Subgrupo Insertado Correctamente'), (transaction,error)=>console.log(error.message));
@@ -101,6 +103,30 @@ function selectGastos() {
     
         });
       });
+}
+
+function eliminarGrupo(id) {  
+        db.transaction(tx => {
+        tx.executeSql('DELETE FROM grupos WHERE id = ?', [id], correcto('Eliminado Correctamente'), (transaction,error)=>console.log(error.message));     
+        });
+}
+
+function eliminarSubGrupo(id) {  
+    db.transaction(tx => {
+    tx.executeSql('DELETE FROM subgrupos WHERE id = ?', [id], correcto('Eliminado Correctamente'), (transaction,error)=>console.log(error.message));     
+    });
+}
+
+function eliminarGasto(id) {  
+    db.transaction(tx => {
+    tx.executeSql('DELETE FROM gastos WHERE id = ?', [id], correcto('Eliminado Correctamente'), (transaction,error)=>console.log(error.message));     
+    });
+}
+
+function eliminarGasto(id) {  
+    db.transaction(tx => {
+    tx.executeSql('DELETE FROM gastos WHERE id = ?', [id], correcto('Eliminado Correctamente'), (transaction,error)=>console.log(error.message));     
+    });
 }
 
 function actualizar(gasto) {

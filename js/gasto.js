@@ -5,7 +5,6 @@ class Gasto {
         this.valor = valor;
         this.subgrupo = subgrupo;
         this.periodo = periodo;
-
     }
 
 
