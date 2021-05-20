@@ -16,7 +16,7 @@ function populateDB() {
         tx.executeSql('CREATE TABLE IF NOT EXISTS subgrupos (id integer primary key autoincrement, nombre text, grupo integer)');
     });
     db.transaction(tx => {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS ingresos (id integer primary key autoincrement, nombre text, valor integer)');
+        tx.executeSql('CREATE TABLE IF NOT EXISTS ingresos (id integer primary key autoincrement, nombre text, valor integer,periodo text)');
     });
 
 }
@@ -43,12 +43,22 @@ function insertarGasto(gasto) {
     });
 }
 
+
+function insertarIngreso(ingreso) {
+    console.log(ingreso);
+    db.transaction(tx => {
+        tx.executeSql('INSERT INTO ingresos (nombre, valor,periodo) VALUES (?,?,?)', [ingreso.nombre, ingreso.valor,ingreso.periodo], correcto('Ingreso Insertado Correctamente'), (transaction,error)=>console.log(error.message));
+
+    });
+}
+
 function insertarGrupo(grupos) {
     db.transaction(tx => {
         tx.executeSql('INSERT INTO grupos (nombre) VALUES (?)', [grupos.nombre], correcto('Grupo Insertado Correctamente'),(transaction,error)=>console.log(error.message));
 
     });
 }
+
 
 function insertarSubgrupos(subgrupos) {
     db.transaction(tx => {
@@ -105,11 +115,33 @@ function selectGastos() {
       });
 }
 
+function selectIngresos() {
+    return new Promise(resolve => {
+        db.transaction(tx => {
+            tx.executeSql('SELECT * FROM ingresos ORDER BY id ', [], (tx, result) => {
+                let rows = result.rows;
+                if (rows.length >= 1) {
+                    resolve(rows);
+                } else {
+                    resolve('Vacio');
+                }
+            });
+    
+        });
+      });
+}
 function eliminarGrupo(id) {  
         db.transaction(tx => {
         tx.executeSql('DELETE FROM grupos WHERE id = ?', [id], correcto('Eliminado Correctamente'), (transaction,error)=>console.log(error.message));     
         });
 }
+
+function eliminarIngreso(id) {  
+    db.transaction(tx => {
+    tx.executeSql('DELETE FROM ingresos WHERE id = ?', [id], correcto('Eliminado Correctamente'), (transaction,error)=>console.log(error.message));     
+    });
+}
+
 
 function eliminarSubGrupo(id) {  
     db.transaction(tx => {
