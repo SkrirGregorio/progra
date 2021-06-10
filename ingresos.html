@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <title>Ingresos</title>
 </head>
+
 <body>
-  <!-- Menu de navegacion -->
+    <!-- Menu de navegacion -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">Proyecto</a>
@@ -16,86 +18,90 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="grupos.html">Grupos <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="subgrupos.html">Sub Grupos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="gastos.html">Gastos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="ingresos.html">Ingresos</a>
-          </li>
-            
-          </ul>
-        </div>
-      </nav>
-  <!-- Menu de navegacion -->
-  <div class="container p-4">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="grupos.html">Grupos <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="subgrupos.html">Sub Grupos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gastos.html">Gastos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ingresos.html">Ingresos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="datos.html">Ver Balance</a>
+                </li>
 
-   <h1>Ingresos </h1>   
-   <p>
-    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            </ul>
+        </div>
+    </nav>
+    <!-- Menu de navegacion -->
+    <div class="container p-4">
+
+        <h1>Ingresos </h1>
+        <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
      Nuevo Ingreso
     </a>
 
-  </p>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-        <form id="formulario">
-            
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <form id="formulario">
 
-            <div class="form-group">
-                <label for="nombre">Ingrese el nombre del Ingreso</label>
-                <input type="text" class="form-control" id="nombre" >               
-            </div>
-            <div class="form-group">
-                <label for="nombre">Ingrese el Valor del Ingreso</label>
-                <input type="number" class="form-control" id="valor" >
-               
-            </div>
 
-            <div class="form-group">
-                <label for="nombre">Seleccionar el pediodo</label>
-                <select class="form-control" name="" id="periodo">                
+                    <div class="form-group">
+                        <label for="nombre">Ingrese el nombre del Ingreso</label>
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Ingrese el Valor del Ingreso</label>
+                        <input type="number" class="form-control" id="valor">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Seleccionar el pediodo</label>
+                        <select class="form-control" name="" id="periodo">   
+                    <option value="Una vez">Una vez</option>
                     <option value="Diario">Diario</option>
                     <option value="Semanal">Semanal</option>
                     <option value="Mensual">Mensual</option>
-                </select>               
-              </div>           
+                </select>
+                    </div>
 
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <button type="reset" class="btn btn-light">Limpiar</button>
-          </form>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="reset" class="btn btn-light">Limpiar</button>
+                </form>
+            </div>
+        </div>
+        <!-- Tabla para mostrar la lista de registro -->
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre </th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Periodo</th>
+
+                    <th scope="col">Operaciones</th>
+                </tr>
+            </thead>
+            <!-- Los registros son cargados por una funcion y agregador por el ID y jquery -->
+
+            <tbody id="ingresos">
+
+
+            </tbody>
+        </table>
+
     </div>
-  </div>
-    <!-- Tabla para mostrar la lista de registro --> 
-    
-   <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nombre </th>
-        <th scope="col">Valor</th>
-        <th scope="col">Periodo</th>
- 
-        <th scope="col">Operaciones</th>
-      </tr>
-    </thead>
-      <!-- Los registros son cargados por una funcion y agregador por el ID y jquery -->
-
-    <tbody id="ingresos">  
-     
-
-    </tbody>
-  </table>
-
-  </div>
-   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script src="js/ingresos.js"></script>
     <script src="js/dbAccess.js"></script>
     <script src="js/mainIngresos.js"></script>
@@ -103,4 +109,5 @@
 
 
 </body>
+
 </html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Datos</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Proyecto</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="grupos.html">Grupos <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="subgrupos.html">Sub Grupos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gastos.html">Gastos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ingresos.html">Ingresos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="datos.html">Ver Balance</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <h1 align="center"> Control de Balance</h1>
+
+    <br><br>
+    <h2 align="center"> Saldo <span id="saldo">Q500</span>
+    </h2>
+    <h3 align="center"> Evaluación a <span id="eva"> 1 mes </span>
+    </h3>
+    <br>
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-mb-4">
+                <!-- Boton para desplegar el fomulario -->
+                <p>
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+Evaluar datos
+    </a>
+                </p>
+
+                <!-- Formulario para crear un nuevo registro -->
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <form id="formulario">
+                            <div class="form-group">
+                                <label for="meses">Ingrese el numero de meses a evaluar</label>
+                                <input type="number" class="form-control" id="meses" value="1">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Evaluar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h3>Ingresos <span id="totalI">Q5000</span>
+                </h3>
+                <table class="table table-light">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Ingreso</th>
+                            <th>Valor</th>
+
+                            <th>Periodo</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoI">
+                        <tr>
+                            <td>Sueldo</td>
+
+                            <td>Q2500</td>
+                            <td>Mensual</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <h3>Gastos <span id="totalG">Q4500</span></h3>
+                <table class="table table-light">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Gasto</th>
+                            <th>Valor</th>
+
+                            <th>Periodo</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpoG">
+                        <tr>
+                            <td>Banco</td>
+                            <td>Q2500</td>
+                            <td>Mensual</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="js/dbAccess.js"></script>
+    <script src="js/mainDatos.js"></script>
+
+
+
+</body>
+
+</html>
