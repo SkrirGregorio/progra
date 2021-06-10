@@ -15,6 +15,9 @@ obtenerIngresos();
 
 ///Funcion para obtener los grupos de la base de datos y mostrarlos en la tabla
 async function obtenerGastos() {
+        totalG = 0;
+    totalI = 0;
+    saldo = 0;
     // Llamamos a nuestra funcion de la base de datos que ara la consulta
     let datos = await selectGastos();
     if (datos != 'Vacio') {
